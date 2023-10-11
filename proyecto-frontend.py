@@ -5,6 +5,7 @@ import pickle
 from pathlib import Path
 import pandas as pd
 import plotly.express as px
+from logup import sign_up, fetch_users
 
 with open('styles.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -81,6 +82,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 names = ["Carlos Reyes", "Rebeca Miller"]
 usernames = ["Empanada", "bunuelo"]
 
@@ -99,11 +101,16 @@ if authentication_status == False:
 if authentication_status == None:
     st.warning("Por favor ingrese su contrasena y usuario")
 
+if not authentication_status:
+        sign = st.sidebar.radio("No estas registrado?", ["Login", "Registro"])
+        if sign == "Registro":
+            sign_up()
+        
 if authentication_status:
 # Pagina de inicio
  def home():
 
-    logo_path = "RACpeq.jpg"
+    logo_path = "RACpeqA.png"
     # logo_path = "RACsinfondo.jpg"
     # logo_path = "LogoRac.jpg"
     # logo_path = "OIG.M.jpg"
@@ -119,7 +126,7 @@ if authentication_status:
     # st.title("Clasificador de Links Web")
     st.sidebar.header(f'Bienvenido {username}')
     st.sidebar.title("Menu")
-    page = st.sidebar.radio("Selecciona una pagina:", ["Extraer Caracteristicas", "Lista de Links", "Login", "Registro"])
+    page = st.sidebar.radio("Selecciona una pagina:", ["Extraer Caracteristicas", "Lista de Links"])
 
     if page == "Extraer Caracteristicas":
         extract_features()
@@ -127,27 +134,26 @@ if authentication_status:
     elif page == "Lista de Links":
         show_links()
         
-    elif page == "Login":
-        login()
+    # elif page == "Login":
+    #     login()
         
-    elif page == "Registro":
-        register()
+    # elif page == "Registro":
+    #     register()
     authenticator.logout(":green[Logout]", "sidebar")
 
  def extract_features():
-    # st.markdown('<div class="link-input-bar"><input type="text" placeholder="Ingresa un enlace"></div>', unsafe_allow_html=True)
-    link = st.text_input("Ingresa el link:")
-    st.write("")  # Espacio en blanco para separar los elementos
+    link = st.text_input("Ingresa el enlace:")
     
     green_button = '<button class="button-primary">Procesar</button>'
-    # Variable de estado para controlar la visibilidad de la frase
     show_success_message = False
     
     if st.markdown(green_button, unsafe_allow_html=True):
-        # Aquí puedes poner la lógica para procesar el enlace cuando se hace clic en el botón
-        if show_success_message:
-            st.success("Enlace procesado exitosamente")
-        show_success_message = True
+        user_input_link = link
+
+        if user_input_link:
+            st.write(f"Enlace procesado... funciona Aljenadro??: {user_input_link}")
+        else:
+            st.warning("Ingresa un enlace")
     
     #la lgica de extraccin de caractersticas
 
@@ -158,47 +164,14 @@ if authentication_status:
     #estilo al selectbox al hacer clic
     st.markdown('<style>.st-ef .st-e6.st-e7 .st-bm { background-color: #005500; color: white; }</style>', unsafe_allow_html=True)
     
-    filter_option = st.selectbox("Filtrar por:", ["Nombre", "Fecha de Ingreso"])
-    # implementar la lgica de mostrar la lista de links y aplicar filtros
-
-# Pgina de login
- def login():
-    # st.title("Login")
-    st.markdown('<label class="text-label">Nombre de usuario:</label>', unsafe_allow_html=True)
-    username = st.text_input("", "", key="username")
-    st.markdown('<label class="text-label">Contrasena:</label>', unsafe_allow_html=True)
-
-    password = st.text_input("", type="password", key="password")
-    # username = st.text_input("Nombre de usuario:")
-    # password = st.text_input("Contrasena:", type="password")
-    # login_button = st.button("Iniciar Sesion")
-    button_html = '<button class="button-primary">Iniciar Sesion</button>'
-    st.markdown(button_html, unsafe_allow_html=True)
-
-    # if login_button:
-        # Aquo puedes implementar la logica de autenticacion
-    
-    if st.button("¿Aún no estás registrado?", key='Noregister'):
-        register()
-
-# Pogina de registro
- def register():
-    # st.title("Registro")
-    st.markdown('<label class="text-label">Nombre de usuario:</label>', unsafe_allow_html=True)
-    username = st.text_input("", "", key="username")
-    
-    st.markdown('<label class="text-label">Contrasena:</label>', unsafe_allow_html=True)
-    password = st.text_input("", type="password", key="password")
-    
-    st.markdown('<label class="text-label">Confirmar Contrasena:</label>', unsafe_allow_html=True)
-    confirm_password = st.text_input("", type="password", key="confirm_password")
-    
-    register_button = '<button class="button-primary">Registrarse</button>'
-    st.markdown(register_button, unsafe_allow_html=True)
-
-
-    # if register_button:
-        # implementar la logica de registro
+    filter_option = st.selectbox("Filtrar por:", ["Filtrar por", "Nombre", "Fecha de Ingreso"])
+    # lgica de mostrar la lista de links y aplicar filtros
+    if filter_option == "Nombre":
+        logo_path2 = "RACsinfondo.jpg"
+        st.image(logo_path2, use_column_width=False)
+    elif filter_option == "Fecha de Ingreso":
+        logo_path = "LogoRac.jpg"
+        st.image(logo_path, use_column_width=False)
 
  if __name__ == "__main__":
      home()
