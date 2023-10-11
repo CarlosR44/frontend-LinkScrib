@@ -1,0 +1,35 @@
+/* styles.css */
+
+body {
+    background-color: #333333;
+    color: white; /* Cambiar el color del texto a blanco */
+}
+
+.title {
+    color: #06680b;
+}
+
+.button-primary {
+    background-color: #008000; /* Cambiar el color de fondo del botón a verde */
+    color: white; /* Cambiar el color del texto del botón a blanco */
+}
+
+.text-label {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Estilos para el contenedor de entrada de texto */
+.text-input-container {
+    margin-bottom: 15px;
+}
+
+/* Estilos para los campos de entrada de texto */
+.text-input {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
