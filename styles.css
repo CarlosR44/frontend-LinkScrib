@@ -49,18 +49,28 @@ p{
     color: white; /* Cambiar el color del texto del botón a blanco */
 }
 .st-emotion-cache-18ni7ap.ezrtsby23 {
-    background-color: #333333; /* Cambiar el color de fondo del botón a verde */
+    background-color: #333333; /* Cambiar el color de fondo a gris */
     color: white; /* Cambiar el color del texto del botón a blanco */
 }
 
 h1{
-    color: #080303;
+    color: #333333;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .st-emotion-cache-10trblm.e1nzilvr1 {
-    color: #1ac24f; /* Cambiar el color del texto del botón a blanco */
+    color: #1ac24f; /* Cambiar el color  */
+}
+
+.st-emotion-cache-7ym5gk.ef3psqc11{
+    background-color: #008000; /* Cambiar el color de fondo del botón a verde */
+    color: white; /* Cambiar el color del texto del botón a blanco */
+}
+
+.st-emotion-cache-18ni7ap.ezrtsby2{
+    background-color: #333333; /* Cambiar el color de fondo superior a gris */
+    color: white; 
 }
 
 
@@ -71,3 +81,6 @@ h1{
 /* st-emotion-cache-18ni7ap ezrtsby2 */
 /* 2e692e */
 /* st-emotion-cache-10trblm e1nzilvr1 */
+/* element-container st-emotion-cache-1gi7qys e1f1d6gn2 */
+/* st-emotion-cache-7ym5gk ef3psqc11 */
+/* st-emotion-cache-18ni7ap ezrtsby2 */
